@@ -1,0 +1,139 @@
+#about-me {
+
+  width: 80%;
+  padding-top: 1rem;
+
+  margin: auto;
+  margin-bottom: 5rem;
+  article {
+    width: 100%;
+    margin: auto;
+  }
+  .title-section {
+    width: 100%;
+    margin: auto;
+    display:flex;
+
+    h1 {
+      font-size: 1.8rem;
+      padding-bottom: 3rem;
+    }
+    ul {
+      list-style-type: decimal-leading-zero;
+      list-style-position: inside;
+      li::marker {
+        font-size: 1.2rem;
+        color: var(--color-red);
+      }
+
+    }
+
+   
+
+    .separator {
+      border-bottom: 2px solid lightgrey;
+    }
+  }
+
+  p { 
+    padding-top: 1rem;
+    width: 100%;
+    font-size: 1.1rem;
+    text-align: left;
+    line-height: 1.7rem;
+  }
+
+  .skills {
+    ul {
+      width: 100%;
+      padding-top: 3rem;
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      li {
+        width: 50%;
+        list-style-position: inside;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-text);
+      }
+
+      li:nth-child(2n) {
+        padding-left: 1rem;
+      }
+      li:nth-child(2n+1) {
+        border-right: 1px solid var(--color-text);
+      }
+      li:nth-child(5), :nth-child(6) {
+        border-bottom:0;
+      }
+
+      li::marker {
+        content: '☞  ';
+        font-size: 1.5rem;
+        color: var(--color-red);
+      }
+    }
+  }
+
+  .profil {
+    width: 100%;
+    margin: auto;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+
+    img {
+      margin-top: 5rem;
+      width: 20rem;
+      border-radius: 50%;
+      border: 3px solid var(--color-red);
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: drop-shadow(10px 10px 30px rgba(0,0,0,0.3)) grayscale(100%) ;
+      &:hover {
+
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%) drop-shadow(10px 10px 30px rgba(0,0,0,0.3));
+
+      }
+    }
+
+  }
+ 
+}
+
+@media screen and(min-width: 1300px) {
+
+  #about-me {
+    width: 70%;
+
+    margin: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    
+  .title-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+h1 {
+  font-size: 2.5rem;
+}
+
+
+
+}
+
+p {
+  width: 100%;
+}
+
+.skills {
+  ul {
+    width: 96%;
+  }
+}
+}
+}
