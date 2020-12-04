@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import './mywork.css';
 import Projet1 from '../../../assets/website-dribble.png';
+import { ReactComponent as Github } from '../../../assets/github.svg';
+import { ReactComponent as LinkIcon } from '../../../assets/link.svg';
 import { LanguageContext } from '../../../context/language/LanguageContext';
 import { words } from '../../../langues/';
 
@@ -28,7 +30,14 @@ export const MyWork = () => {
               (experiences stocked in DB, created by the users)
             </p>
             <h5>React Node.js Express</h5>
-            <span>Github Link - Demo Link</span>
+            <div>
+              <span>
+                <Github />
+              </span>
+              <span>
+                <LinkIcon />
+              </span>
+            </div>
           </div>
         </div>
         <div className='contain-pic'>
@@ -41,7 +50,14 @@ export const MyWork = () => {
               (experiences stocked in DB, created by the users)
             </p>
             <h5>React Node.js Express</h5>
-            <span>Github Link - Demo Link</span>
+            <div>
+              <span>
+                <Github />
+              </span>
+              <span>
+                <LinkIcon />
+              </span>
+            </div>
           </div>
         </div>
         <div className='contain-pic'>
@@ -54,7 +70,14 @@ export const MyWork = () => {
               (experiences stocked in DB, created by the users)
             </p>
             <h5>React Node.js Express</h5>
-            <span>Github Link - Demo Link</span>
+            <div>
+              <span>
+                <Github />
+              </span>
+              <span>
+                <LinkIcon />
+              </span>
+            </div>
           </div>
         </div>
       </article>
