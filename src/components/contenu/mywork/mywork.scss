@@ -70,8 +70,7 @@
         height: 100%;
         border: 2px solid var(--color-red);
         border-radius: 10px;
-        background-color: var(--color-bg);
-        backdrop-filter: blur(20px);
+        background-color: var(--color-opacityred);
         opacity: 0;
         padding: 1rem;
         transition: opacity 330ms ease-in;
@@ -79,7 +78,7 @@
           opacity: 0.9;
         }
         h5 {
-          color: var(--color-red);
+          color: var(--color-diff);
           font-size: 1rem;
           font-weight: 500;
           letter-spacing: 2px;
