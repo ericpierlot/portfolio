@@ -27,6 +27,8 @@ export const words = {
     subjectLang: 'Subject : ',
     messageLang: 'Your message : ',
     sendLang: 'Send',
+    emailSuccess:
+      "Your message has been send successfully, I'll reply to you quickly !",
   },
   fr: {
     link1: 'A propos de moi.',
@@ -56,5 +58,7 @@ export const words = {
     subjectLang: 'Sujet : ',
     messageLang: 'Votre message : ',
     sendLang: 'Envoyer',
+    emailSuccess:
+      'Votre message a bien été envoyé ! Je vous répondrai au plus vite.',
   },
 };

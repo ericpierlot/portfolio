@@ -9,6 +9,9 @@ import { ToggleSwitch } from '../../toggleswitch/ToggleSwitch';
 import { ReactComponent as FranceIcon } from '../../../assets/france.svg';
 import { ReactComponent as EnglandIcon } from '../../../assets/england.svg';
 
+import { init } from 'emailjs-com';
+import { emailjs } from 'emailjs-com';
+
 export const ContactMe = () => {
   const languageContext = useContext(LanguageContext);
   const { language, setLanguage } = languageContext;
@@ -21,14 +24,21 @@ export const ContactMe = () => {
     link1,
     link2,
     link3,
+    emailSuccess,
   } = words[language];
   const [isOpen, setIsOpen] = useState(false);
 
   const Burger = useRef();
   const menuInvi = useRef();
+  const successMail = useRef();
+  const successMail2 = useRef();
   const [message, setMessage] = useState('');
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
+
+  // Email via EmailJS
+  init('user_Ew9XrkjXyZ4iEcDtwFcP6');
+
   const handleName = (e) => {
     setName(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1));
   };
@@ -68,6 +78,44 @@ export const ContactMe = () => {
   ) : (
     ''
   );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    init('user_Ew9XrkjXyZ4iEcDtwFcP6');
+
+    const dataContact = {
+      user_id: 'user_Ew9XrkjXyZ4iEcDtwFcP6',
+      service_id: 'service_lj7x3ng',
+      template_id: 'template_xxs2hxt',
+      template_params: {
+        from_name: name,
+        subject: subject,
+        message: message,
+      },
+    };
+
+    const fetchEmail = async () => {
+      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        body: JSON.stringify(dataContact),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+        .then((res) => {
+          setName('');
+          setSubject('');
+          setMessage('');
+          successMail.current.style.display = 'flex';
+          successMail2.current.style.display = 'flex';
+        })
+        .catch((err) => {
+          console.error('error', err);
+        });
+    };
+
+    fetchEmail();
+  };
 
   const handleBurger = () => {
     if (isOpen) {
@@ -170,7 +218,12 @@ export const ContactMe = () => {
                     <p>{onWriteName}</p>
                     <p>{onWriteSubject}</p>
                     <p>{onWriteMessage}</p>
-                    <button>Send</button>
+                    <div ref={successMail2} className='message-send'>
+                      {emailSuccess}
+                    </div>
+                    <button type='submit' onClick={handleSubmit}>
+                      {sendLang}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -206,7 +259,12 @@ export const ContactMe = () => {
           />
         </div>
         <div className='confirm'>
-          <button>{sendLang}</button>
+          <div ref={successMail} className='message-send'>
+            {emailSuccess}
+          </div>
+          <button type='submit' onClick={handleSubmit}>
+            {sendLang}
+          </button>
         </div>
       </article>
     </section>

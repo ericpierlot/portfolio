@@ -28,7 +28,8 @@ var words = {
     nameLang: 'Your Name : ',
     subjectLang: 'Subject : ',
     messageLang: 'Your message : ',
-    sendLang: 'Send'
+    sendLang: 'Send',
+    emailSuccess: "Your message has been send successfully, I'll reply to you quickly !"
   },
   fr: {
     link1: 'A propos de moi.',
@@ -53,7 +54,8 @@ var words = {
     nameLang: 'Votre Nom : ',
     subjectLang: 'Sujet : ',
     messageLang: 'Votre message : ',
-    sendLang: 'Envoyer'
+    sendLang: 'Envoyer',
+    emailSuccess: 'Votre message a bien été envoyé ! Je vous répondrai au plus vite.'
   }
 };
 exports.words = words;
