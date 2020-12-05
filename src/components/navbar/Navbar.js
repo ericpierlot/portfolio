@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import { ToggleSwitch } from '../toggleswitch/ToggleSwitch';
 import { LanguageContext } from '../../context/language/LanguageContext';
 import { words } from '../../langues/';
@@ -11,12 +11,21 @@ export const Navbar = () => {
   const languageContext = useContext(LanguageContext);
   const { language, setLanguage } = languageContext;
 
-  const [isOn, setIsOn] = useState(true);
+  const [isOn, setIsOn] = useState(
+    window.localStorage.theme === 'dark' ? 'dark' : 'light'
+  );
   const Burger = useRef();
   const menuInvi = useRef();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const { link1, link2, link3 } = words[language];
+
+  useEffect(() => {
+    const getFavoriteLang = window.localStorage.getItem('lang');
+
+    getFavoriteLang === 'fr' ? setLanguage('fr') : setLanguage('en');
+  }, [setLanguage]);
+
   const handleBurger = () => {
     if (isOpen) {
       menuInvi.current.style.visibility = 'visible';
@@ -57,12 +66,38 @@ export const Navbar = () => {
         <div ref={Burger} onClick={handleBurger} className='burger'></div>
         <ToggleSwitch isOn={isOn} setIsOn={setIsOn} />
         {language === 'fr' ? (
-          <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
-            <EnglandIcon alt='icon' />
+          <div
+            style={{
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+            onClick={() => {
+              setLanguage('en');
+              window.localStorage.removeItem('lang');
+              window.localStorage.setItem('lang', 'en');
+            }}
+          >
+            EN/<strong>FR</strong>
+            <EnglandIcon style={{ marginLeft: '10px' }} alt='icon' />
           </div>
         ) : (
-          <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
-            <FranceIcon alt='icon' />
+          <div
+            style={{
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+            onClick={() => {
+              setLanguage('fr');
+              window.localStorage.removeItem('lang');
+              window.localStorage.setItem('lang', 'fr');
+            }}
+          >
+            <strong>EN</strong>/FR
+            <FranceIcon style={{ marginLeft: '10px' }} alt='icon' />
           </div>
         )}
       </nav>

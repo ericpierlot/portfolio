@@ -10,7 +10,7 @@ import { ReactComponent as FranceIcon } from '../../../assets/france.svg';
 import { ReactComponent as EnglandIcon } from '../../../assets/england.svg';
 
 import { init } from 'emailjs-com';
-import { emailjs } from 'emailjs-com';
+import { Loading } from '../../loading/Loading';
 
 export const ContactMe = () => {
   const languageContext = useContext(LanguageContext);
@@ -18,23 +18,25 @@ export const ContactMe = () => {
   const {
     t3,
     nameLang,
-    subjectLang,
+    emailLang,
     messageLang,
     sendLang,
     link1,
     link2,
     link3,
     emailSuccess,
+    empty,
   } = words[language];
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const Burger = useRef();
   const menuInvi = useRef();
-  const successMail = useRef();
-  const successMail2 = useRef();
+
   const [message, setMessage] = useState('');
   const [name, setName] = useState('');
-  const [subject, setSubject] = useState('');
+  const [email, setSubject] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   // Email via EmailJS
   init('user_Ew9XrkjXyZ4iEcDtwFcP6');
@@ -61,10 +63,10 @@ export const ContactMe = () => {
   ) : (
     ''
   );
-  const onWriteSubject = subject ? (
+  const onWriteSubject = email ? (
     <span>
       <strong>Subject: </strong>
-      {subject}
+      {email}
     </span>
   ) : (
     ''
@@ -81,6 +83,11 @@ export const ContactMe = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!(name && email && message)) {
+      return setIsError(true);
+    }
+
     init('user_Ew9XrkjXyZ4iEcDtwFcP6');
 
     const dataContact = {
@@ -89,29 +96,27 @@ export const ContactMe = () => {
       template_id: 'template_xxs2hxt',
       template_params: {
         from_name: name,
-        subject: subject,
+        email: email,
         message: message,
       },
     };
 
     const fetchEmail = async () => {
+      setIsLoading(true);
+      setIsError(false);
       await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         body: JSON.stringify(dataContact),
         headers: {
           'Content-type': 'application/json',
         },
-      })
-        .then((res) => {
-          setName('');
-          setSubject('');
-          setMessage('');
-          successMail.current.style.display = 'flex';
-          successMail2.current.style.display = 'flex';
-        })
-        .catch((err) => {
-          console.error('error', err);
-        });
+      }).then((res) => {
+        setIsLoading(false);
+        setName('');
+        setSubject('');
+        setMessage('');
+        setIsSuccess(true);
+      });
     };
 
     fetchEmail();
@@ -173,17 +178,29 @@ export const ContactMe = () => {
                   <ToggleSwitch />
                   {language === 'fr' ? (
                     <div
-                      style={{ cursor: 'pointer' }}
+                      style={{
+                        cursor: 'pointer',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                      }}
                       onClick={() => setLanguage('en')}
                     >
-                      <EnglandIcon alt='icon' />
+                      FR/<strong>EN</strong>
+                      <EnglandIcon style={{ marginLeft: '10px' }} alt='icon' />
                     </div>
                   ) : (
                     <div
-                      style={{ cursor: 'pointer' }}
+                      style={{
+                        cursor: 'pointer',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                      }}
                       onClick={() => setLanguage('fr')}
                     >
-                      <FranceIcon alt='icon' />
+                      <strong>EN</strong>/FR
+                      <FranceIcon style={{ marginLeft: '10px' }} alt='icon' />
                     </div>
                   )}
                 </div>
@@ -218,11 +235,10 @@ export const ContactMe = () => {
                     <p>{onWriteName}</p>
                     <p>{onWriteSubject}</p>
                     <p>{onWriteMessage}</p>
-                    <div ref={successMail2} className='message-send'>
-                      {emailSuccess}
-                    </div>
+                    {isError ? <div>{empty}</div> : ''}
+                    {isSuccess ? emailSuccess : ''}
                     <button type='submit' onClick={handleSubmit}>
-                      {sendLang}
+                      {isLoading ? <Loading /> : isSuccess ? '👍' : sendLang}
                     </button>
                   </div>
                 </div>
@@ -240,12 +256,12 @@ export const ContactMe = () => {
             value={name}
             onChange={handleName}
           />
-          <label htmlFor='subject'>{subjectLang}</label>
+          <label htmlFor='email'>{emailLang}</label>
           <input
-            id='subject'
+            id='email'
             type='text'
-            name='subject'
-            value={subject}
+            name='email'
+            value={email}
             onChange={handleSubject}
           />
           <label htmlFor='yourmessage'>{messageLang}</label>
@@ -259,11 +275,10 @@ export const ContactMe = () => {
           />
         </div>
         <div className='confirm'>
-          <div ref={successMail} className='message-send'>
-            {emailSuccess}
-          </div>
+          {isError ? <strong>{empty}</strong> : ''}
+          {isSuccess ? emailSuccess : ''}
           <button type='submit' onClick={handleSubmit}>
-            {sendLang}
+            {isLoading ? <Loading /> : isSuccess ? '👍' : sendLang}
           </button>
         </div>
       </article>

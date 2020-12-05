@@ -24,11 +24,12 @@ export const words = {
     t2: 'My work.',
     t3: 'Contact me.',
     nameLang: 'Your Name : ',
-    subjectLang: 'Subject : ',
+    emailLang: 'Your E-mail : ',
     messageLang: 'Your message : ',
     sendLang: 'Send',
     emailSuccess:
-      "Your message has been send successfully, I'll reply to you quickly !",
+      "Your message has been send successfully, I'll reply to you shortly !",
+    empty: 'Please, fill all fields.',
   },
   fr: {
     link1: 'A propos de moi.',
@@ -55,10 +56,11 @@ export const words = {
     t2: 'Mes travaux.',
     t3: 'Me contacter',
     nameLang: 'Votre Nom : ',
-    subjectLang: 'Sujet : ',
+    emailLang: 'Votre E-mail : ',
     messageLang: 'Votre message : ',
     sendLang: 'Envoyer',
     emailSuccess:
       'Votre message a bien été envoyé ! Je vous répondrai au plus vite.',
+    empty: 'Veuillez remplir tout les champs',
   },
 };

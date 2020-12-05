@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import './aboutme.css';
-import PortraitPic from '../../../assets/me2.png';
-
+import PortraitPic from '../../../assets/me.png';
 import { LanguageContext } from '../../../context/language/LanguageContext';
 import { words } from '../../../langues/';
 

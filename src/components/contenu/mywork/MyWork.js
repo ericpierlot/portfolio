@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './mywork.css';
-import Projet1 from '../../../assets/website-dribble.png';
+import Projet1 from '../../../assets/findanddo.jpg';
+import Projet2 from '../../../assets/coupons.png';
 import { ReactComponent as Github } from '../../../assets/github.svg';
 import { ReactComponent as LinkIcon } from '../../../assets/link.svg';
 import { LanguageContext } from '../../../context/language/LanguageContext';
@@ -29,53 +30,48 @@ export const MyWork = () => {
               A web app for looking experiences to do in a city or around
               (experiences stocked in DB, created by the users)
             </p>
-            <h5>React Node.js Express</h5>
+
             <div>
               <span>
-                <Github />
+                <a
+                  href='https://github.com/ericpierlot/find-and-do'
+                  target='blank'
+                >
+                  <Github />
+                </a>
               </span>
+              <h5>React / Node.js / Express</h5>
               <span>
-                <LinkIcon />
+                <a href='https://find-and-do.herokuapp.com/' target='blank'>
+                  <LinkIcon />
+                </a>
               </span>
             </div>
           </div>
         </div>
         <div className='contain-pic'>
-          <img src={Projet1} alt='Integration website' />
+          <img src={Projet2} alt='Integration website' />
           <div className='cadre-pic'>
             <h5>Featured Project</h5>
-            <h3>Find & Do</h3>
-            <p>
-              A web app for looking experiences to do in a city or around
-              (experiences stocked in DB, created by the users)
-            </p>
-            <h5>React Node.js Express</h5>
+            <h3>Coupons</h3>
+            <p>A website designed on Dribbble and Integrated by me.</p>
             <div>
               <span>
-                <Github />
+                <a
+                  href='https://github.com/ericpierlot/integrations/tree/master'
+                  target='blank'
+                >
+                  <Github />
+                </a>
               </span>
+              <h5>React</h5>
               <span>
-                <LinkIcon />
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className='contain-pic'>
-          <img src={Projet1} alt='Integration website' />
-          <div className='cadre-pic'>
-            <h5>Featured Project</h5>
-            <h3>Find & Do</h3>
-            <p>
-              A web app for looking experiences to do in a city or around
-              (experiences stocked in DB, created by the users)
-            </p>
-            <h5>React Node.js Express</h5>
-            <div>
-              <span>
-                <Github />
-              </span>
-              <span>
-                <LinkIcon />
+                <a
+                  href='https://ericpierlot.github.io/integrations/'
+                  target='blank'
+                >
+                  <LinkIcon />
+                </a>
               </span>
             </div>
           </div>

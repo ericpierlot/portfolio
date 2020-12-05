@@ -30,19 +30,16 @@
 
   
 .confirm {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .message-send {
-    display: none;
-    color: var(--color-text);
-    font-weight: bolder;
-    font-size: 1rem;
-    width: 100%;
-text-align: center;
-margin-bottom: 2rem;
-  }
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+button {
+  margin-top: 1rem;
+  transition: background-color 330ms ease-in;
+}
+
 }
   .title-section {
     width: 80%;
@@ -210,6 +207,9 @@ height: 10px;
 display: inline-block;
     overflow: auto;
   button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 0.6rem;
     border-radius: 5px;
     width: 60px;
@@ -221,9 +221,9 @@ display: inline-block;
 
       .ecran-title {
         padding-top: 1rem;
-        width: 65%;
+        width: 70%;
         margin: auto;
-        display:flex;
+
         h2 {
           font-size: 1rem;
           width: 100%;
@@ -244,20 +244,17 @@ display: inline-block;
         max-width: 80%;
         min-height: 100px;
         margin: auto;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         padding-top: 1rem;
         font-size: 0.5rem;
         overflow-wrap: break-word;
         color: var(--color-text);
         padding-bottom: 1rem;  
-
-        .message-send {
-          display:none;
-          color: var(--color-text);
-          font-weight: bolder;
-          font-size: 0.6rem;
-          width: 100%;
-          margin-bottom: 1rem;
-          text-align: center;
+        button {
+          padding: 0.7rem;
         }
         p {
           padding-bottom: 0.4rem;
@@ -296,7 +293,7 @@ display: inline-block;
     margin: auto;
     display:flex;
     flex-direction: column;
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
 
     label {
       padding-top: 1rem;
@@ -313,7 +310,7 @@ display: inline-block;
       border-radius: 5px;
 
       &:focus {
-        background-color: var(--color-opacityred);
+        background-color: #c1292e34;
       }
     }
 
@@ -327,7 +324,7 @@ display: inline-block;
       border-radius: 5px;
 
       &:focus {
-        background-color: var(--color-opacityred);
+        background-color: #c1292e34;
       }
 
     }
@@ -360,19 +357,12 @@ display: inline-block;
       
     }
   .confirm {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    .message-send {
-      display: none;
-      color: var(--color-text);
-      font-weight: bolder;
-      font-size: 1rem;
-      width: 100%;
-  text-align: center;
-  margin-bottom: 2rem;
+    button {
+      margin-top: 1rem;
     }
   }
   .title-section {
@@ -393,6 +383,7 @@ h1 {
   .computer {
     height: 420px;
     max-width: 800px;
+    min-width: 100%;
 
 
     .border-ecran {
@@ -458,19 +449,19 @@ h1 {
         }
   
         .ecran-form {
-          width: 100%;
+          width: 80%;
           max-width: 60%;
           height: 70%;
           font-size: 0.8rem;
-
-          .message-send {
-            display: none;
-            color: var(--color-text);
-            font-weight: bolder;
-            font-size: 1rem;
-            width: 100%;
-            margin-bottom: 1rem;
-            text-align: center;
+          display:flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          button {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.7rem;
           }
 
           p {
@@ -496,11 +487,11 @@ h1 {
   }
   
   .contact-form {
-    width: 60%;
+    width: 100%;
     margin: auto;
     display:flex;
     flex-direction: column;
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
 
    
     label {
@@ -516,9 +507,9 @@ h1 {
       padding: 1rem;
       outline: none;
       border-radius: 5px;
-
+      transition: background-color 330ms ease-in;
       &:focus {
-        background-color: var(--color-opacityred);
+        background-color: #c1292e34;
       }
     }
 
@@ -530,9 +521,9 @@ h1 {
       padding: 1rem;
       outline: none;
       border-radius: 5px;
-
+      transition: background-color 330ms ease-in;
       &:focus {
-        background-color: var(--color-opacityred);
+        background-color: #c1292e34;
       }
 
     }

@@ -6,6 +6,13 @@ footer {
   padding-bottom: 1rem;
   padding-top: 2rem;
 }
+footer a {
+  text-decoration: none;
+}
+footer svg {
+  fill: var(--color-text);
+  margin: 0 1rem 0 1rem;
+}
 
 .separator {
   padding-top: 5rem;
