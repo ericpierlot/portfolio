@@ -47,7 +47,7 @@ export const Navbar = () => {
         <img
           id='EP-LOGO'
           src={Logo}
-          onClick={() => window.location.assign('#EP-LOGO')}
+          onClick={() => window.scrollTo(0, 0)}
           alt='Eric Pierlot'
         />
         <div className='menu-desktop'>

@@ -27,7 +27,7 @@ export const ContactMe = () => {
     emailSuccess,
     empty,
   } = words[language];
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const Burger = useRef();
@@ -155,7 +155,7 @@ export const ContactMe = () => {
                   <img
                     src={Logo}
                     alt='logo'
-                    onClick={() => window.location.assign('#EP-LOGO')}
+                    onClick={() => window.scrollTo(0, 0)}
                   />
                   <div
                     ref={Burger}

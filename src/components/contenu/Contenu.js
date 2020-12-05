@@ -42,9 +42,9 @@ export const Contenu = () => {
         </div>
       </section>
       <div className='contain-scroll'>
-        <a href='#EP-LOGO' id='scrollToTop' aria-label='Scroll to Top'>
+        <span onClick={() => window.scrollTo(0, 0)} id='scrollToTop'>
           ☝
-        </a>
+        </span>
       </div>
       <AboutMe />
       <MyWork />
